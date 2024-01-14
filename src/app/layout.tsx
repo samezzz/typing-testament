@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					src="http://cdn.scripture.api.bible/fums/fumsv2.min.js"
 					strategy="beforeInteractive"
 				/>
-				<FumsScript />
+				{/* <FumsScript /> */}
 			</head>
 			<body className="flex flex-col max-w-[1200px] min-h-screen mx-auto px-4 md:px-10">
 				<ThemeProvider

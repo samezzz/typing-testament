@@ -1,5 +1,5 @@
 import UserTypings from "@/components/user-typings";
-import Verses from "@/components/verses";
+import Verses from "@/components/chapter";
 
 export default function Home() {
 	return (

@@ -14,7 +14,7 @@ import {
 	VerseType,
 } from "@/types";
 
-const BIBLE_API_SECRET = process.env.BIBLE_API_SECRET as string;
+const BIBLE_API_SECRET = process.env.BIBLE_API_SECRET_DEV as string;
 
 export async function getBibles(): Promise<BibleType[]> {
 	const res = await fetch("https://api.scripture.api.bible/v1/bibles", {
@@ -201,7 +201,7 @@ export async function getVerses({
 	chapterID: string;
 }): Promise<VerseSummaryType[]> {
 	const res = await fetch(
-		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/chpaters/${chapterID}/verses`,
+		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/chapters/${chapterID}/verses`,
 		{
 			headers: {
 				"Content-Type": "application/json",
@@ -221,7 +221,7 @@ export async function getVerse({
 	bibleVerseID: string;
 }): Promise<{ data: VerseType; meta: Meta }> {
 	const res = await fetch(
-		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/verses/${bibleVerseID}?content-type=text?include-chapter-numbers=false&include-verse-numbers=false`,
+		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/verses/${bibleVerseID}?include-chapter-numbers=false&include-verse-numbers=false`,
 		{
 			headers: {
 				"Content-Type": "application/json",
@@ -230,18 +230,6 @@ export async function getVerse({
 		}
 	);
 	const verse: { data: VerseType; meta: Meta } = await res.json();
-	// const fumsId = verse.meta.fumsId;
-	// Call _BAPI.t with the obtained fumsId
-
-	// Call _BAPI.t with the obtained fumsId
-	// if (typeof _BAPI !== "undefined" && _BAPI.t) {
-	// 	_BAPI.t(fumsId);
-	// }
-
-	// if (typeof window !== "undefined" && window._BAPI && window._BAPI.t) {
-	// 	window._BAPI.t(fumsId);
-	// }
-
 	return verse;
 }
 

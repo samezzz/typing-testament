@@ -1,22 +1,50 @@
-import { getBible, getBibles, getBooks, getVerse } from "@/app/actions";
-import { BibleType, BookType, VerseType } from "@/types";
-import React from "react";
+import {
+	getBibles,
+	getBooks,
+	getChapter,
+	getChapters,
+	getVerse,
+	getVerses,
+} from "@/app/actions";
+import { BibleType } from "@/types";
 import { cn } from "@/lib/utils";
 
 const Verses = async () => {
-	// const biblesInAllLanguages: BibleType[] = await getBibles();
+	const biblesInAllLanguages: BibleType[] = await getBibles();
 	// Filter bibles for English language
-	// const englishBibles = biblesInAllLanguages.filter(
-	// (bible) => bible.language.name === "English"
-	// );
+	const englishBibles = biblesInAllLanguages.filter(
+		(bible) => bible.language.name === "English"
+	);
 
-	// if (englishBibles.length === 0) {
-	// console.error("No English bibles found.");
-	// return null;
-	// }
+	if (englishBibles.length === 0) {
+		console.error("No English bibles found.");
+		return null;
+	}
 	// Select the first English bible (you might want to adjust this based on your logic)
-	// const selectedBible = englishBibles[0];
-	// console.log("🚀 ~ Verses ~ selectedBible:", selectedBible);
+	const selectedBible = englishBibles[10];
+
+	const books = await getBooks({ bibleVersionID: selectedBible.id });
+	const chapters = await getChapters({
+		bibleVersionID: selectedBible.id,
+		bibleBookID: books[0].id,
+	});
+	const chapter = await getChapter({
+		bibleVersionID: selectedBible.id,
+		chapterID: chapters[0].id,
+	});
+
+	console.log(chapter)
+
+	const verses = await getVerses({
+		bibleVersionID: selectedBible.id,
+		chapterID: chapter.data.id,
+	});
+	console.log("🚀 ~ Verses ~ verses:", verses);
+
+	// const verse = await getVerse({
+	// bibleVersionID: selectedBible.id,
+	// bibleVerseID: verses[0].id,
+	// });
 
 	// Fetch details of the selected Bible
 	// const bible: BibleType = await getBible(selectedBible.id);

@@ -1,3 +1,11 @@
+import { Icons } from "@/components/icons";
+
+export type MenuItemType = {
+	name: string;
+	disabled: boolean;
+	icon?: keyof typeof Icons;
+};
+
 export type Meta = {
 	fums: string;
 	fumsId: string;

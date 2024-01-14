@@ -4,6 +4,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
+import MenuBar from "@/components/menu-bar";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -13,14 +16,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className={cn(GeistSans.variable, GeistMono.variable)}>
-			<body>
+			<body className="flex flex-col max-w-[1200px] min-h-screen mx-auto px-4 md:px-10">
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					{children}
+					<div className="flex-grow flex flex-col items-center">
+						<Navbar />
+						<div className="flex items-center my-auto">{children}
+						</div>
+						<MenuBar />
+						<Footer />
+					</div>
 				</ThemeProvider>
 			</body>
 		</html>

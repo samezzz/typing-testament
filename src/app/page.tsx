@@ -1,15 +1,16 @@
-import { ModeToggle } from "@/components/mode-toggle";
 import UserTypings from "@/components/user-typings";
 import Verses from "@/components/verses";
 
 export default function Home() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center p-24">
-			<div className="relative text-3xl max-w-xl leading-relaxed break-all mt-3">
+		<main className="flex flex-col items-center justify-center">
+			<div className="items-center justify-center relative text-2xl leading-relaxed break-all">
 				<Verses />
 				<UserTypings className="absolute inset-0 mt-1" words={""} userInput={""} />
 			</div>
-			<ModeToggle />
+			<div>
+				{/* <MenuBar /> */}
+			</div>
 		</main>
 	);
 }

@@ -3,7 +3,6 @@ import { BibleType, BookType, VerseType } from "@/types";
 import React from "react";
 import { cn } from "@/lib/utils";
 
-
 const Verses = async () => {
 	// const biblesInAllLanguages: BibleType[] = await getBibles();
 	// Filter bibles for English language
@@ -57,8 +56,7 @@ const Verses = async () => {
 				);
 			})} */}
 			For God so loved the world, that he gave his only Son, that whoever believes in him should
-			not perish but have eternal life. 16 “For this is how God loved the world: He gave his one
-			and only Son, so that everyone who believes in him will not perish but have eternal life.
+			not perish but have eternal life.
 		</div>
 	);
 };

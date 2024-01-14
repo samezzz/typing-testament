@@ -1,162 +1,265 @@
 "use server";
 
-import { BibleType, BookType, ChapterType, PassageType, SectionType, VerseType } from "@/types";
+import {
+	BibleType,
+	BookType,
+	ChapterSummaryType,
+	ChapterType,
+	Meta,
+	PassageType,
+	SearchResponseType,
+	SectionSummaryType,
+	SectionType,
+	VerseSummaryType,
+	VerseType,
+} from "@/types";
 
 const BIBLE_API_SECRET = process.env.BIBLE_API_SECRET as string;
 
 export async function getBibles(): Promise<BibleType[]> {
 	const res = await fetch("https://api.scripture.api.bible/v1/bibles", {
 		headers: {
+			"Content-Type": "application/json",
 			"api-key": BIBLE_API_SECRET,
 		},
 	});
-	const bibles = await res.json();
+	const bibles: { data: BibleType[] } = await res.json();
 	return bibles.data;
 }
 
-export async function getBible(bibleID: string): Promise<BibleType> {
+export async function getBible({ bibleID }: { bibleID: string }): Promise<BibleType> {
 	const res = await fetch(`https://api.scripture.api.bible/v1/bibles/${bibleID}`, {
 		headers: {
+			"Content-Type": "application/json",
 			"api-key": BIBLE_API_SECRET,
 		},
 	});
-	const bible = await res.json();
-	return bible;
+	const bible: { data: BibleType } = await res.json();
+	return bible.data;
 }
 
-export async function getBooks(bibleVersionID: string): Promise<BookType[]> {
+export async function getBooks({
+	bibleVersionID,
+}: {
+	bibleVersionID: string;
+}): Promise<BookType[]> {
 	const res = await fetch(`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/books`, {
 		headers: {
+			"Content-Type": "application/json",
 			"api-key": BIBLE_API_SECRET,
 		},
 	});
-	const books = await res.json();
+	const books: { data: BookType[] } = await res.json();
 	return books.data;
 }
 
-export async function getBook(bibleVersionID: string, bookID: string): Promise<BookType> {
+export async function getBook({
+	bibleVersionID,
+	bookID,
+}: {
+	bibleVersionID: string;
+	bookID: string;
+}): Promise<BookType> {
 	const res = await fetch(
 		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/books/${bookID}`,
 		{
 			headers: {
+				"Content-Type": "application/json",
 				"api-key": BIBLE_API_SECRET,
 			},
 		}
 	);
-	const biblesData = await res.json();
+	const biblesData: { data: BookType } = await res.json();
 	return biblesData.data;
 }
 
-export async function getChapters(
-	bibleVersionID: string,
-	bibleBookID: string
-): Promise<ChapterType[]> {
+export async function getChapters({
+	bibleVersionID,
+	bibleBookID,
+}: {
+	bibleVersionID: string;
+	bibleBookID: string;
+}): Promise<ChapterSummaryType[]> {
 	const res = await fetch(
 		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/books/${bibleBookID}/chapters`,
 		{
 			headers: {
+				"Content-Type": "application/json",
 				"api-key": BIBLE_API_SECRET,
 			},
 		}
 	);
-	const chapters = await res.json();
+	const chapters: { data: ChapterSummaryType[] } = await res.json();
 	return chapters.data;
 }
 
-export async function getChapter(
-	bibleVersionID: string,
-	chapterID: string
-): Promise<ChapterType> {
+export async function getChapter({
+	bibleVersionID,
+	chapterID,
+}: {
+	bibleVersionID: string;
+	chapterID: string;
+}): Promise<{ data: ChapterType; meta: Meta }> {
 	const res = await fetch(
 		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/chapters/${chapterID}`,
 		{
 			headers: {
+				"Content-Type": "application/json",
 				"api-key": BIBLE_API_SECRET,
 			},
 		}
 	);
-	const biblesData = await res.json();
-	return biblesData.data;
+	const chapter: { data: ChapterType; meta: Meta } = await res.json();
+	return chapter;
 }
 
-export async function getSections(
-	bibleVersionID: string,
-	bibleBookID: string
-): Promise<SectionType[]> {
+export async function getSectionsOfBooks({
+	bibleVersionID,
+	bibleBookID,
+}: {
+	bibleVersionID: string;
+	bibleBookID: string;
+}): Promise<SectionSummaryType[]> {
 	const res = await fetch(
 		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/books/${bibleBookID}/sections`,
 		{
 			headers: {
+				"Content-Type": "application/json",
 				"api-key": BIBLE_API_SECRET,
 			},
 		}
 	);
-	const sections = await res.json();
+	const sections: { data: SectionSummaryType[] } = await res.json();
 	return sections.data;
 }
 
-export async function getSection(
-	bibleVersionID: string,
-	bibleSectionID: string
-): Promise<SectionType> {
+export async function getSectionsOfChapters({
+	bibleVersionID,
+	bibleChapterID,
+}: {
+	bibleVersionID: string;
+	bibleChapterID: string;
+}): Promise<SectionSummaryType[]> {
+	const res = await fetch(
+		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/chapters/${bibleChapterID}/sections`,
+		{
+			headers: {
+				"Content-Type": "application/json",
+				"api-key": BIBLE_API_SECRET,
+			},
+		}
+	);
+	const sections: { data: SectionSummaryType[] } = await res.json();
+	return sections.data;
+}
+
+export async function getSection({
+	bibleVersionID,
+	bibleSectionID,
+}: {
+	bibleVersionID: string;
+	bibleSectionID: string;
+}): Promise<{ data: SectionType; meta: Meta }> {
 	const res = await fetch(
 		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/sections/${bibleSectionID}?include-chapter-numbers=true&include-verse-spans=true`,
 		{
 			headers: {
+				"Content-Type": "application/json",
 				"api-key": BIBLE_API_SECRET,
 			},
 		}
 	);
-	const section = await res.json();
-	return section.data;
+	const section: { data: SectionType; meta: Meta } = await res.json();
+	return section;
 }
 
-export async function getPassages(
-	bibleVersionID: string,
-	passageID: string
-): Promise<PassageType> {
+export async function getPassages({
+	bibleVersionID,
+	passageID,
+}: {
+	bibleVersionID: string;
+	passageID: string;
+}): Promise<{ data: PassageType; meta: Meta }> {
 	const res = await fetch(
 		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/passages/${passageID}`,
 		{
 			headers: {
+				"Content-Type": "application/json",
 				"api-key": BIBLE_API_SECRET,
 			},
 		}
 	);
-	const passages = await res.json();
-	return passages.data;
+	const passages: { data: PassageType; meta: Meta } = await res.json();
+	return passages;
 }
 
-export async function getVerses(
-	bibleVersionID: string,
-	chapterID: string
-): Promise<VerseType[]> {
+export async function getVerses({
+	bibleVersionID,
+	chapterID,
+}: {
+	bibleVersionID: string;
+	chapterID: string;
+}): Promise<VerseSummaryType[]> {
 	const res = await fetch(
 		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/chpaters/${chapterID}/verses`,
 		{
 			headers: {
+				"Content-Type": "application/json",
 				"api-key": BIBLE_API_SECRET,
 			},
 		}
 	);
-	const verses = await res.json();
+	const verses: { data: VerseSummaryType[] } = await res.json();
 	return verses.data;
 }
 
-export async function getVerse(
-	bibleVersionID: string,
-	bibleVerseID: string
-): Promise<{ content: string; reference: string }> {
+export async function getVerse({
+	bibleVerseID,
+	bibleVersionID,
+}: {
+	bibleVersionID: string;
+	bibleVerseID: string;
+}): Promise<{ data: VerseType; meta: Meta }> {
 	const res = await fetch(
-		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/verses/${bibleVerseID}?include-chapter-numbers=false&include-verse-numbers=false`,
+		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/verses/${bibleVerseID}?content-type=text?include-chapter-numbers=false&include-verse-numbers=false`,
 		{
 			headers: {
+				"Content-Type": "application/json",
 				"api-key": BIBLE_API_SECRET,
 			},
 		}
 	);
-	const { data } = await res.json();
-	const { content, reference } = data;
+	const verse: { data: VerseType; meta: Meta } = await res.json();
+	// const fumsId = verse.meta.fumsId;
+	// Call _BAPI.t with the obtained fumsId
 
-	return { content, reference };
+	// Call _BAPI.t with the obtained fumsId
+	// if (typeof _BAPI !== "undefined" && _BAPI.t) {
+	// 	_BAPI.t(fumsId);
+	// }
+
+	// if (typeof window !== "undefined" && window._BAPI && window._BAPI.t) {
+	// 	window._BAPI.t(fumsId);
+	// }
+
+	return verse;
+}
+
+export async function searchBible({
+	bibleVersionID,
+}: {
+	bibleVersionID: string;
+}): Promise<{ query: string; data: SearchResponseType; meta: Meta }> {
+	const res = await fetch(
+		`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/search`,
+		{
+			headers: {
+				"Content-Type": "application/json",
+				"api-key": BIBLE_API_SECRET,
+			},
+		}
+	);
+	const verse: { query: string; data: SearchResponseType; meta: Meta } = await res.json();
+
+	return verse;
 }

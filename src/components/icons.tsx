@@ -1,5 +1,17 @@
 import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
-import { X, Mail, LinkIcon, User2, Eye } from "lucide-react";
+import {
+	X, LinkIcon,
+	User2,
+	Eye,
+	KeyboardIcon,
+	CrownIcon,
+	Wrench,
+	Palette, RotateCw,
+	Info,
+	Clock4Icon,
+	BookMarkedIcon,
+	Settings
+} from "lucide-react";
 
 export const Icons = {
 	github: GitHubLogoIcon,
@@ -9,6 +21,15 @@ export const Icons = {
 	link: LinkIcon,
 	users: User2,
 	views: Eye,
+	refresh: RotateCw,
+	keyboard: KeyboardIcon,
+	crown: CrownIcon,
+	info: Info,
+	wrench: Wrench,
+	themes: Palette,
+	time: Clock4Icon,
+	settings: Settings,
+	version: BookMarkedIcon,
 };
 
 export function InboxIcon(props: any) {
@@ -52,7 +73,7 @@ export function LayersIcon(props: any) {
 	);
 }
 
-export function MenuIcon(props:any) {
+export function MenuIcon(props: any) {
 	return (
 		<svg
 			{...props}

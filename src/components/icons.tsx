@@ -10,7 +10,8 @@ import {
 	Info,
 	Clock4Icon,
 	BookMarkedIcon,
-	Settings
+	Settings,
+	Gamepad2Icon
 } from "lucide-react";
 
 export const Icons = {
@@ -30,6 +31,7 @@ export const Icons = {
 	time: Clock4Icon,
 	settings: Settings,
 	version: BookMarkedIcon,
+	games: Gamepad2Icon,
 };
 
 export function InboxIcon(props: any) {

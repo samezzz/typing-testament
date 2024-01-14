@@ -1,5 +1,13 @@
 import { Icons } from "@/components/icons";
 
+declare global {
+	interface Window {
+		_BAPI: {
+			t: (string) => void
+		};
+	}
+}
+
 export type MenuItemType = {
 	name: string;
 	disabled: boolean;

@@ -10,36 +10,36 @@ import { BibleType } from "@/types";
 import { cn } from "@/lib/utils";
 
 const Verses = async () => {
-	const biblesInAllLanguages: BibleType[] = await getBibles();
-	// Filter bibles for English language
-	const englishBibles = biblesInAllLanguages.filter(
-		(bible) => bible.language.name === "English"
-	);
+	// const biblesInAllLanguages: BibleType[] = await getBibles();
+	// // Filter bibles for English language
+	// const englishBibles = biblesInAllLanguages.filter(
+	// 	(bible) => bible.language.name === "English"
+	// );
 
-	if (englishBibles.length === 0) {
-		console.error("No English bibles found.");
-		return null;
-	}
-	// Select the first English bible (you might want to adjust this based on your logic)
-	const selectedBible = englishBibles[10];
+	// if (englishBibles.length === 0) {
+	// 	console.error("No English bibles found.");
+	// 	return null;
+	// }
+	// // Select the first English bible (you might want to adjust this based on your logic)
+	// const selectedBible = englishBibles[10];
 
-	const books = await getBooks({ bibleVersionID: selectedBible.id });
-	const chapters = await getChapters({
-		bibleVersionID: selectedBible.id,
-		bibleBookID: books[0].id,
-	});
-	const chapter = await getChapter({
-		bibleVersionID: selectedBible.id,
-		chapterID: chapters[0].id,
-	});
+	// const books = await getBooks({ bibleVersionID: selectedBible.id });
+	// const chapters = await getChapters({
+	// 	bibleVersionID: selectedBible.id,
+	// 	bibleBookID: books[0].id,
+	// });
+	// const chapter = await getChapter({
+	// 	bibleVersionID: selectedBible.id,
+	// 	chapterID: chapters[0].id,
+	// });
 
-	console.log(chapter)
+	// console.log(chapter)
 
-	const verses = await getVerses({
-		bibleVersionID: selectedBible.id,
-		chapterID: chapter.data.id,
-	});
-	console.log("🚀 ~ Verses ~ verses:", verses);
+	// const verses = await getVerses({
+	// 	bibleVersionID: selectedBible.id,
+	// 	chapterID: chapter.data.id,
+	// });
+	// console.log("🚀 ~ Verses ~ verses:", verses);
 
 	// const verse = await getVerse({
 	// bibleVersionID: selectedBible.id,

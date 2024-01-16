@@ -3,5 +3,8 @@
 	"extends": [
 		"next/core-web-vitals"
 	],
-	"plugins" :["taliwindcss"]
+	  "rules": {
+    "react/no-unescaped-entities": "off"
+  }
+
 }

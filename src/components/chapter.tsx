@@ -23,7 +23,7 @@ const Chapter = async () => {
 	});
 	const chapter = await getChapter({
 		bibleVersionID: selectedBible.id,
-		chapterID: chapters[1].id,
+		chapterID: chapters[12].id,
 	});
 
 	return (
@@ -35,53 +35,3 @@ const Chapter = async () => {
 };
 
 export default Chapter;
-
-// console.log(chapter);
-
-// return (
-// 	<div className={cn("font-mono font-light")}>
-// 		For God so loved the world, that he gave his only Son, that whoever believes in him should
-// 		not perish but have eternal life.
-// // 	</div>
-// );
-{
-	/* {bibles.map(
-				(bible, index) =>
-					bible.language.name === "English" && (
-						<div key={index} className="mb-4">
-							<p>{bible.nameLocal}</p>
-							<p>{bible.abbreviationLocal}</p>
-						</div>
-					)
-			)} */
-}
-{
-	/* {books.map(
-				(book, index) =>
-				{
-					return (
-						<div key={index}>
-							<h1>{ book.name}</h1>
-						</div>
-					)
-					}
-					)} */
-}
-{
-	/* {verse.map((verse, index) => {
-				return (
-					<div key={index}>
-						<h1>{verse.content}</h1>
-					</div>
-				);
-			})} */
-}
-
-// Fetch details of the selected Bible
-// const bible: BibleType = await getBible(selectedBible.id);
-// console.log("Bible Details:", bible);
-
-// Assuming you want to get a verse from the selected Bible
-// const bibleVerseID = bible.id;
-// const { content, reference } = await getVerse(bible.id, bibleVerseID);
-// console.log("Verse:", verse);

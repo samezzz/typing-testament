@@ -5,7 +5,7 @@ import Link from "next/link";
 // import { nav } from "@/constants";
 // import { MobileNav } from "./MobileNav";
 import React, { useEffect, useState } from "react";
-import { Icons } from "./icons";
+import { Icons } from "../icons";
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { usePathname } from "next/navigation";
 // import { UserAccountNav } from "./UserAccountNav";

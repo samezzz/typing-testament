@@ -4,9 +4,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { cn } from "@/lib/utils";
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
-import MenuBar from "@/components/menu-bar";
+import Footer from "@/components/common/footer";
+import Navbar from "@/components/common/navbar";
+import MenuBar from "@/components/common/menu-bar";
 import FumsScript from "./FumScript";
 
 export const metadata: Metadata = {
@@ -18,9 +18,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en" className={cn(GeistSans.variable, GeistMono.variable)}>
 			<head>
+				<link rel="icon" href="/favicon.ico" sizes="any" />
+				<link
+					rel="icon"
+					href="/icon?<generated>"
+					type="image/<generated>"
+					sizes="<generated>"
+				/>
+				<link
+					rel="apple-touch-icon"
+					href="/apple-icon?<generated>"
+					type="image/<generated>"
+					sizes="<generated>"
+				/>
 				<FumsScript />
 			</head>
-			<body className="flex flex-col max-w-[1200px] min-h-screen mx-auto px-4 md:px-10">
+			<body className="min-h-screen p-4 gap-2 transition-padding-top duration-125 w-screen flex flex-col max-w-[1200px] mx-auto px-4 md:px-10">
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"

@@ -2,6 +2,5 @@
 	"$schema": "https://json.schemastore.org/eslintrc",
 	"extends": [
 		"next/core-web-vitals"
-	],
-	"plugins" :["taliwindcss"]
+	]
 }

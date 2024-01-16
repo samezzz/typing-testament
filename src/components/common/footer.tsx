@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import { Icons } from "./icons";
+import { Icons } from "../icons";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
+import { buttonVariants } from "../ui/button";
 // import { siteConfig } from "@/constants";
 
 export default function Footer({ className }: React.HTMLAttributes<HTMLElement>) {

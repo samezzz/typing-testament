@@ -3,9 +3,22 @@ import { Icons } from "@/components/icons";
 declare global {
 	interface Window {
 		_BAPI: {
-			t: (string) => void
+			t: (string) => void;
 		};
 	}
+}
+
+
+type DifficultyType = "normal" | "hard";
+type ModeType = "ENGLISH_MODE" | "GAME_MODE" | "TRAINER_MODE" | "QWERTY keyboard practice mode";
+type GameModeType = "WORD_MODE" | "SENTENCE_MODE";
+type PacingType = "caret" | "pulse";
+
+export type SoundOptions = "keyboard" | "typewriter" | "cherry";
+
+// Interface for the tooltips
+interface Tooltips {
+	[key: string]: string;
 }
 
 export type MenuItemType = {

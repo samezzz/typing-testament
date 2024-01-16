@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Icons } from "./icons";
+import { Icons } from "../icons";
 
 export default function MenuBar() {
 	return (

@@ -8,7 +8,7 @@ const nextConfig = {
 					{ key: "Access-Control-Allow-Credentials", value: "true" },
 					{
 						key: "Access-Control-Allow-Origin",
-						value: "http://cdn.scripture.api.bible",
+						value: "http://cdn.scripture.api.bible/fums/fumsv2.min.js",
 					}, // replace this your actual origin
 					{ key: "Access-Control-Allow-Methods", value: "GET,DELETE,PATCH,POST,PUT" },
 					{

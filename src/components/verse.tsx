@@ -153,7 +153,6 @@ export default function Verse({ data, meta }: VerseProps) {
 	]);
 
 	if (!verseData || !verseMeta) {
-		// Render loading or fallback content if data and meta are not available yet
 		return <p className="font-mono font-light">Loading Verse...</p>;
 	}
 

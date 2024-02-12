@@ -1,15 +1,17 @@
-"use client";
+// "use client";
 
 import Script from "next/script";
 
 const FumsScript = () => {
 	return (
-		<Script
-			src="http://cdn.scripture.api.bible/fums/fumsv2.min.js"
-			strategy="beforeInteractive"
-			integrity="1U6Q5HNn2sv4WQApQqkJo1rwImVwKJXPcFT5XYsQwgGA7+mQB18GzW0h0JEQnRSd%"
-			crossOrigin="anonymous"
-		/>
+		<>
+			<Script
+				src="http://cdn.scripture.api.bible/fums/fumsv2.min.js"
+				strategy="beforeInteractive"
+				integrity="1U6Q5HNn2sv4WQApQqkJo1rwImVwKJXPcFT5XYsQwgGA7+mQB18GzW0h0JEQnRSd%"
+				crossOrigin="anonymous"
+			/>
+		</>
 	);
 };
 
